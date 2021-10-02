@@ -1,6 +1,7 @@
-package com.tutrit.qs.webtgbot.controller;
+package com.tutrit.qs.webtgbot.botcontroller;
 
 import com.tutrit.qs.webtgbot.proxy.BotProxy;
+import com.tutrit.qs.webtgbot.service.CommandDispatcher;
 import com.tutrit.qs.webtgbot.service.RequestDispatcher;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -16,10 +17,10 @@ import org.telegram.telegrambots.meta.api.objects.Update;
 public class UpdateController {
     private final ServerProperties serverProperties;
     private final BotProxy botProxy;
-    private final RequestDispatcher requestDispatcher;
+    private final CommandDispatcher commandDispatcher;
 
     @PostMapping("/onUpdate")
     public void onUpdateReceived(@RequestBody Update update) {
-        requestDispatcher.dispatch(update);
+        commandDispatcher.dispatch(update);
     }
 }

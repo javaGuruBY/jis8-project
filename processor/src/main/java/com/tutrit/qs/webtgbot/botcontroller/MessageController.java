@@ -1,4 +1,4 @@
-package com.tutrit.qs.webtgbot.controller;
+package com.tutrit.qs.webtgbot.botcontroller;
 
 import com.tutrit.qs.webtgbot.service.MessageService;
 import lombok.RequiredArgsConstructor;
