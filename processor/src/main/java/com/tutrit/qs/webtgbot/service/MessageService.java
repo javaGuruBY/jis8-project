@@ -1,6 +1,5 @@
 package com.tutrit.qs.webtgbot.service;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.tutrit.qs.webtgbot.proxy.BotProxy;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

@@ -4,7 +4,6 @@ import com.tutrit.qs.webtgbot.repository.StoredMessageRepository;
 import com.tutrit.qs.webtgbot.util.Mapper;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.telegram.telegrambots.meta.api.methods.send.SendMessage;
 import org.telegram.telegrambots.meta.api.objects.Update;
 
 @Service

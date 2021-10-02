@@ -1,9 +1,8 @@
 package com.tutrit.qs.webtgbot.bean;
 
-import lombok.Data;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import lombok.Data;
 
 @Data
 @Entity
