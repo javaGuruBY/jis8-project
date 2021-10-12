@@ -6,7 +6,8 @@ import java.util.Objects;
 /**
  * User is person who registers somewhere.
  */
-public class User {
+public class User implements Entity {
+    private Long id;
     private String name;
     private String surname;
     private List<Slot> slots;
@@ -71,5 +72,14 @@ public class User {
                 ", surname='" + surname + '\'' +
                 ", slots=" + slots +
                 '}';
+    }
+
+    @Override
+    public Object getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
