@@ -26,3 +26,9 @@ ___
 ##Дополнительные возможности
 
 Дополниетльная информация на [официальном сайте продукта](http://register-bot.online/)
+
+to build with file system persistence 
+mvn clean package -Pfilesystem
+
+to build with h2 database persistence
+mvn clean package -Ph2db

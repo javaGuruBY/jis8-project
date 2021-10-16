@@ -1,6 +1,6 @@
 package com.tutrit.registerservice.service;
 
-import com.tutrit.registerservice.bean.Slot;
+import com.tutrit.register.model.Slot;
 import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;

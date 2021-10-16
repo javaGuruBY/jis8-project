@@ -1,6 +1,6 @@
 package com.tutrit.registerservice.controller;
 
-import com.tutrit.registerservice.bean.Slot;
+import com.tutrit.register.model.Slot;
 import com.tutrit.registerservice.service.ScheduleCalendar;
 import java.time.LocalDateTime;
 import java.util.Map;
