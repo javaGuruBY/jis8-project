@@ -1,14 +1,14 @@
 package com.tutrit.registerservice;
 
+import com.tutrit.register.gateway.GateWayI;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ConfigurableApplicationContext;
 
 @SpringBootApplication
 public class RegisterServiceApplication {
-  public static ConfigurableApplicationContext ctx;
+    private static GateWayI gateWayI;
 
-  public static void main(String[] args) {
-    ctx = SpringApplication.run(RegisterServiceApplication.class, args);
-  }
+    public static void main(String[] args) {
+        SpringApplication.run(RegisterServiceApplication.class, args);
+    }
 }

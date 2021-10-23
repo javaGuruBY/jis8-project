@@ -1,6 +1,7 @@
 package com.tutrit.registerservice.repository;
 
-import com.tutrit.registerservice.bean.Entity;
+import com.tutrit.register.gateway.GateWayEntity;
+import com.tutrit.register.gateway.GateWayI;
 import com.tutrit.registerservice.bean.Slot;
 import com.tutrit.registerservice.bean.User;
 import com.tutrit.registerservice.config.Storage;
@@ -17,10 +18,10 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Component
-public class GateWayWithFileApiImpl implements GateWay<Entity, Object> {
+public class GateWayIWithFileApiImpl implements GateWayI<GateWayEntity, Long> {
 
     @Override
-    public Entity create(Entity entity) throws IOException {
+    public GateWayEntity create(GateWayEntity entity) throws IOException {
         if (!Files.exists(Storage.pathStorage)) {
             Files.createDirectories(Storage.pathStorage);
         }
@@ -30,19 +31,19 @@ public class GateWayWithFileApiImpl implements GateWay<Entity, Object> {
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(entityFile.toString()))) {
             oos.writeObject(entity);
         }
-        return findById(entity.getId()).orElseThrow(() -> new GateWayException("Entity don't create"));
+        return findById((Long) entity.getId()).orElseThrow(() -> new GateWayException("Entity don't create"));
     }
 
     @Override
-    public Optional<Entity> findById(Object id) throws IOException {
+    public Optional<GateWayEntity> findById(Long id) throws IOException {
         Optional<Path> entityPath = getEntityPath(id.toString());
         return entityPath.
                 map(this::apply);
     }
 
     @Override
-    public Iterable<Entity> findAll() throws IOException, ClassNotFoundException {
-        List<Entity> entities = new ArrayList<>();
+    public Iterable<GateWayEntity> findAll() throws IOException, ClassNotFoundException {
+        List<GateWayEntity> entities = new ArrayList<>();
         List<Path> entityPaths = Files.walk(Storage.pathStorage)
                 //TODO метод найдет все сохранения и User и Slot, возможно бизнес логика требует разделения.
                 //.filter(path -> path.toString().endsWith(".slot"))
@@ -54,13 +55,13 @@ public class GateWayWithFileApiImpl implements GateWay<Entity, Object> {
     }
 
     @Override
-    public Entity update(Entity entity) throws IOException {
+    public GateWayEntity update(GateWayEntity entity) throws IOException {
         delete(entity);
         return create(entity);
     }
 
     @Override
-    public void deleteById(Object id) throws IOException {
+    public void deleteById(Long id) throws IOException {
         Optional<Path> entityPath = getEntityPath(id.toString());
         if (entityPath.isPresent()) {
             Files.delete(entityPath.get());
@@ -68,12 +69,12 @@ public class GateWayWithFileApiImpl implements GateWay<Entity, Object> {
     }
 
     @Override
-    public void delete(Entity entity) throws IOException {
-        deleteById(entity.getId());
+    public void delete(GateWayEntity entity) throws IOException {
+        deleteById((Long) entity.getId());
     }
 
-    private Entity apply(Path path) {
-        Entity entity = null;
+    private GateWayEntity apply(Path path) {
+        GateWayEntity entity = null;
         try {
             entity = getEntity(path);
         } catch (IOException | ClassNotFoundException e) {
@@ -94,7 +95,7 @@ public class GateWayWithFileApiImpl implements GateWay<Entity, Object> {
                 .readObject();
     }
 
-    private Entity getEntity(Path path) throws IOException, ClassNotFoundException {
+    private GateWayEntity getEntity(Path path) throws IOException, ClassNotFoundException {
         String extension = FilenameUtils.getExtension(path.toString());
         if ("user".equals(extension))
             return (User) getReadObject(path);

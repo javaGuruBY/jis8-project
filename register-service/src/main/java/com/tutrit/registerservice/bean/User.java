@@ -1,12 +1,14 @@
 package com.tutrit.registerservice.bean;
 
+import com.tutrit.register.gateway.GateWayEntity;
+
 import java.util.List;
 import java.util.Objects;
 
 /**
  * User is person who registers somewhere.
  */
-public class User implements Entity {
+public class User implements Entity, GateWayEntity {
     private Long id;
     private String name;
     private String surname;
