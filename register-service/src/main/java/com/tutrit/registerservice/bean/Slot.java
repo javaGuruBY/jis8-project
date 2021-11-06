@@ -1,10 +1,25 @@
 package com.tutrit.registerservice.bean;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.Generated;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
+@Entity
+@Data
+@NoArgsConstructor
 public class Slot implements Comparable<Slot>, Serializable {
+    @Id
+    @GeneratedValue
+    private Long id;
+
     private LocalDateTime dateTime;
     private long duration;
 

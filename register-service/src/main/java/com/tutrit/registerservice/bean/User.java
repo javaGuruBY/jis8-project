@@ -1,14 +1,28 @@
 package com.tutrit.registerservice.bean;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import java.util.List;
 import java.util.Objects;
 
 /**
  * User is person who registers somewhere.
  */
+@Entity
+@Data
+@NoArgsConstructor
 public class User {
+    @Id
+    @GeneratedValue
+    private Long id;
     private String name;
     private String surname;
+    @OneToMany
     private List<Slot> slots;
 
     public User(String name, String surname, List<Slot> slots) {
