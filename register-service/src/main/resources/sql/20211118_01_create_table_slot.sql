@@ -4,3 +4,4 @@ CREATE TABLE slot
     datetime TIMESTAMP,
     duration INT
 );
+
