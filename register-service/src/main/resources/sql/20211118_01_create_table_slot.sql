@@ -1,4 +1,4 @@
-CREATE TABLE slots
+CREATE TABLE slot
 (
     id       SERIAL,
     datetime TIMESTAMP,
