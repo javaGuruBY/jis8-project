@@ -3,7 +3,6 @@ SELECT COUNT(*), DAYNAME(start) as day
 from appointment_calendar
 GROUP BY day;
 
-
 # average appointments per day of week
 #1.
 select round(avg(total_for_day)) average_appointments_per_day, day
