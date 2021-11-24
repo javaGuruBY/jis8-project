@@ -1,4 +1,4 @@
-INSERT INTO slots (id, datetime, duration)
+INSERT INTO slot (id, datetime, duration)
 VALUES (4, '2021-11-29T13:33:03', 45),
        (5, '2021-12-27T00:51:25', 45),
        (6, '2021-11-29T19:54:41', 45),
