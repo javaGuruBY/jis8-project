@@ -1,5 +1,5 @@
 #60 count free slots for selected month
-SELECT COUNT(MONTH(start))
+SELECT MONTHNAME(start), COUNT(MONTH(start))
 from (SELECT datetime as start
       FROM slot
                LEFT JOIN fitness_class fc on slot.fitness_class_id = fc.fitness_class_id
