@@ -15,8 +15,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
+/**
+ * Так это реализация GateWay через FileAPI для entity - Slot.
+ * Подлежит удалению после проведение тестов и проверки.
+ * @see GateWayWithFileApiImpl
+ */
 @Component
-public class SlotRepository implements CrudRepository<Slot, LocalDateTime> {
+  public class SlotGateWayWithFileApiImpl implements GateWay<Slot, LocalDateTime> {
 
   @Override
   public Slot create(Slot slot) {
@@ -51,7 +56,7 @@ public class SlotRepository implements CrudRepository<Slot, LocalDateTime> {
     Optional<Path> slotPath = Optional.empty();
     String idAsString = id.toString();
     try {
-      slotPath = Files.walk(Storage.slotStorage)
+      slotPath = Files.walk(Storage.pathStorage)
           .filter(path -> path.toString().endsWith(".slot"))
           .filter(path -> path.toString().startsWith(idAsString))
           .findFirst();
@@ -80,7 +85,7 @@ public class SlotRepository implements CrudRepository<Slot, LocalDateTime> {
     List<Path> slotsPaths = null;
     List<Slot> slots = new ArrayList<>();
     try {
-      slotsPaths = Files.walk(Storage.slotStorage)
+      slotsPaths = Files.walk(Storage.pathStorage)
           .filter(path -> path.toString().endsWith(".slot"))
           .collect(Collectors.toList());
     } catch (IOException e) {
@@ -114,7 +119,7 @@ public class SlotRepository implements CrudRepository<Slot, LocalDateTime> {
     Optional<Path> slotPath = Optional.empty();
     String idAsString = id.toString();
     try {
-      slotPath = Files.walk(Storage.slotStorage)
+      slotPath = Files.walk(Storage.pathStorage)
           .filter(path -> path.toString().endsWith(".slot"))
           .filter(path -> path.toString().startsWith(idAsString))
           .findFirst();

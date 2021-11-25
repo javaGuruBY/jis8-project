@@ -1,4 +1,4 @@
-package com.tutrit.registerservice.repository;
+package com.tutrit.register.gateway;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -6,7 +6,7 @@ import java.util.Optional;
 /**
  * @param <T> is entity
  * @param <D> is Id(key)
- * @see  com.tutrit.registerservice.bean.Entity
+ * @see  GateWayEntity
  */
 public interface CrudRepository<T, D> {
 

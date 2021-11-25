@@ -1,12 +1,14 @@
 package com.tutrit.registerservice.bean;
 
+import com.tutrit.register.gateway.GateWayEntity;
+
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Slot implements Comparable<Slot>, Serializable {
+public class Slot implements Comparable<Slot>, Serializable, Entity, GateWayEntity {
     private LocalDateTime dateTime;
-    private long duration;
+    private Long duration;
 
     public Slot(LocalDateTime dateTime, long duration) {
         this.dateTime = dateTime;
@@ -53,5 +55,10 @@ public class Slot implements Comparable<Slot>, Serializable {
     @Override
     public int compareTo(Slot o) {
         return this.dateTime.compareTo(o.dateTime);
+    }
+
+    @Override
+    public Object getId() {
+        return dateTime;
     }
 }
