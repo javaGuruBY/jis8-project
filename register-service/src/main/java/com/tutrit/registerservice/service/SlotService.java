@@ -1,7 +1,7 @@
 package com.tutrit.registerservice.service;
 
 import com.tutrit.registerservice.bean.Slot;
-import com.tutrit.registerservice.repository.SlotRepository;
+import com.tutrit.registerservice.repository.SlotGateWayWithFileApiImpl;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -13,20 +13,20 @@ import org.springframework.stereotype.Component;
 public class SlotService {
 
   @Autowired
-  SlotRepository slotRepository;
+  SlotGateWayWithFileApiImpl slotGateWayWithFileApiImpl;
 
 
   public void save(Slot slot) {
-    slotRepository.create(slot);
+    slotGateWayWithFileApiImpl.create(slot);
   }
 
   public Map<LocalDateTime, Slot> findAll() {
-    return StreamSupport.stream(slotRepository.findAll().spliterator(), false)
-        .collect(Collectors.toMap(slot -> slot.getDateTime(), slot -> slot));
+    return StreamSupport.stream(slotGateWayWithFileApiImpl.findAll().spliterator(), false)
+        .collect(Collectors.toMap(Slot::getDateTime, slot -> slot));
   }
 
   public void deleteAll() {
-    findAll().values().stream()
-        .forEach(slot -> slotRepository.delete(slot));
+    findAll().values()
+        .forEach(slot -> slotGateWayWithFileApiImpl.delete(slot));
   }
 }

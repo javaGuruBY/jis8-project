@@ -1,18 +1,26 @@
 package com.tutrit.registerservice.repository;
 
+import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * @param <T> is entity
+ * @param <D> is Id(key)
+ * @see  com.tutrit.registerservice.bean.Entity
+ */
 public interface CrudRepository<T, D> {
-  // Create
-  // Read
-  // Update
-  // Delete
 
-  T create(T object);
-  Optional<T> findById(D id);
-  Iterable<T> findAll();
-  T update(T object);
-  void deleteById(D id);
-  void delete(T object);
+    //TODO методы пробрасывают IOException, так как думаю будет удобнее их обрабатывать но более верхнем уровне
+    // все сразу, чем в каждом методе по-отдельности.
+    T create(T object) throws IOException;
 
+    Optional<T> findById(D id) throws IOException;
+
+    Iterable<T> findAll() throws IOException, ClassNotFoundException;
+
+    T update(T object) throws IOException;
+
+    void deleteById(D id) throws IOException;
+
+    void delete(T object) throws IOException;
 }

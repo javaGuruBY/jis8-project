@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Slot implements Comparable<Slot>, Serializable {
+public class Slot implements Comparable<Slot>, Serializable, Entity {
     private LocalDateTime dateTime;
     private long duration;
 
@@ -53,5 +53,10 @@ public class Slot implements Comparable<Slot>, Serializable {
     @Override
     public int compareTo(Slot o) {
         return this.dateTime.compareTo(o.dateTime);
+    }
+
+    @Override
+    public Object getId() {
+        return dateTime;
     }
 }
