@@ -1,13 +1,14 @@
 package com.tutrit.registerservice.service;
 
-import com.tutrit.registerservice.bean.Slot;
-import com.tutrit.registerservice.repository.SlotRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+import com.tutrit.register.gateway.SlotRepository;
+import com.tutrit.register.model.Slot;
 import java.time.LocalDateTime;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 
 @Component
 public class SlotService {

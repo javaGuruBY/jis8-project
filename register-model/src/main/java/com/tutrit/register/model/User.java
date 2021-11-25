@@ -1,5 +1,6 @@
 package com.tutrit.registerservice.bean;
 
+import com.tutrit.register.model.Slot;
 import java.util.List;
 import java.util.Objects;
 
@@ -67,9 +68,9 @@ public class User {
     @Override
     public String toString() {
         return getClass().getSimpleName() +
-                "{name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", slots=" + slots +
-                '}';
+            "{name='" + name + '\'' +
+            ", surname='" + surname + '\'' +
+            ", slots=" + slots +
+            '}';
     }
 }

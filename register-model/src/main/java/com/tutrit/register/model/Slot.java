@@ -1,4 +1,4 @@
-package com.tutrit.registerservice.bean;
+package com.tutrit.register.model;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;

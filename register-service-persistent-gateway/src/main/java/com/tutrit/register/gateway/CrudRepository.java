@@ -1,4 +1,4 @@
-package com.tutrit.registerservice.repository;
+package com.tutrit.register.gateway;
 
 import java.util.Optional;
 
