@@ -13,6 +13,7 @@ ALTER TABLE slot_to_user
 ALTER TABLE slot_to_user
     MODIFY user_id BIGINT NOT NULL;
 #Adding constraint to fitness class id in slot table can't be null
+UPDATE slot SET fitness_class_id = 2 WHERE id = 97;
 ALTER TABLE slot
     MODIFY fitness_class_id BIGINT NOT NULL;
 
